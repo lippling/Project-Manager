@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager", "ProjectManager\ProjectManager.csproj", "{B0FFC9BB-FE19-402F-AA58-C310C9108119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerGUI", "ProjectManagerGUI\ProjectManagerGUI.csproj", "{5A9F6CF4-0BFF-45CD-86BC-6AAC1543A400}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0FFC9BB-FE19-402F-AA58-C310C9108119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FFC9BB-FE19-402F-AA58-C310C9108119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FFC9BB-FE19-402F-AA58-C310C9108119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FFC9BB-FE19-402F-AA58-C310C9108119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A9F6CF4-0BFF-45CD-86BC-6AAC1543A400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A9F6CF4-0BFF-45CD-86BC-6AAC1543A400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A9F6CF4-0BFF-45CD-86BC-6AAC1543A400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A9F6CF4-0BFF-45CD-86BC-6AAC1543A400}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
