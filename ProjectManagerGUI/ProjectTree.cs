@@ -23,6 +23,7 @@ namespace ProjectManagerGUI
                     projects = value;
 
                     treeView.BeginUpdate();
+                    treeView.Nodes.Clear();
 
                     var structuredProjectsNode = new TreeNode { Text = "Structured Projects" };
                     treeView.Nodes.Add(structuredProjectsNode);
