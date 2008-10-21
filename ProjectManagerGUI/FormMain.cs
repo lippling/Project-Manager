@@ -20,6 +20,7 @@ namespace ProjectManagerGUI
         public FormMain()
         {
             InitializeComponent();
+            notifyIcon.Icon = Icon;
             worker.DoWork += (s, e) =>
             {
                 if (InvokeRequired)
@@ -27,15 +28,15 @@ namespace ProjectManagerGUI
                     Invoke((ThreadStart)(() =>
                     {
                         menuItemRefresh.Enabled = false;
-                        progressBar1.Visible = true;
-                        progressBar1.MarqueeAnimationSpeed = 100;
+                        progressBar.Visible = true;
+                        progressBar.MarqueeAnimationSpeed = 100;
                     }));
                 }
                 else
                 {
                     menuItemRefresh.Enabled = false;
-                    progressBar1.Visible = true;
-                    progressBar1.MarqueeAnimationSpeed = 100;
+                    progressBar.Visible = true;
+                    progressBar.MarqueeAnimationSpeed = 100;
                 }
 
                 var container = new SolutionFileCollection();
@@ -48,9 +49,9 @@ namespace ProjectManagerGUI
 
             worker.RunWorkerCompleted += (s, e) =>
             {
-                projectTree1.Projects = (ProjectCollection)e.Result;
-                progressBar1.MarqueeAnimationSpeed = 0;
-                progressBar1.Visible = false;
+                projectTree.Projects = (ProjectCollection)e.Result;
+                progressBar.MarqueeAnimationSpeed = 0;
+                progressBar.Visible = false;
                 menuItemRefresh.Enabled = true;
             };
 
@@ -62,9 +63,30 @@ namespace ProjectManagerGUI
             worker.RunWorkerAsync();
         }
 
+        private bool close;
         private void menuItemQuit_Click(object sender, EventArgs e)
         {
+            close = true;
             Close();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!close)
+            {
+                e.Cancel = true;
+                Hide();
+                notifyIcon.Visible = true;
+            }
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Show();
+                notifyIcon.Visible = false;
+            }
         }
     }
 }

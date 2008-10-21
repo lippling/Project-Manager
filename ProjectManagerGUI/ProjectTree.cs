@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
+using System.Diagnostics;
 
 namespace ProjectManagerGUI
 {
@@ -49,7 +50,7 @@ namespace ProjectManagerGUI
 
                     treeView.Sort();
                     structuredProjectsNode.Expand();
-                    
+
                     treeView.EndUpdate();
                 }
             }
@@ -65,7 +66,7 @@ namespace ProjectManagerGUI
         private static void AddTrunk(TreeNode projectNode, SolutionFile trunk)
         {
             if (trunk != null)
-                projectNode.Nodes.Add(new TreeNode { Text = "trunk" });
+                projectNode.Nodes.Add(new TreeNode { Text = "trunk", Tag = trunk });
         }
 
         private static void AddBranchTag(TreeNode projectNode, ICollection<BranchTagBase> items, string rootName)
@@ -75,7 +76,7 @@ namespace ProjectManagerGUI
                 var branchesNode = new TreeNode { Text = rootName };
                 projectNode.Nodes.Add(branchesNode);
                 foreach (var item in items)
-                    branchesNode.Nodes.Add(new TreeNode { Text = item.Name, ToolTipText = item.SolutionFile.FullName });
+                    branchesNode.Nodes.Add(new TreeNode { Text = item.Name, ToolTipText = item.SolutionFile.FullName, Tag = item.SolutionFile });
             }
         }
 
@@ -89,6 +90,16 @@ namespace ProjectManagerGUI
             if (e.Button == MouseButtons.Right)
             {
                 treeView.SelectedNode = treeView.GetNodeAt(e.X, e.Y);
+            }
+        }
+
+        private void treeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                var solutionFile = e.Node.Tag as SolutionFile;
+                if (solutionFile != null)
+                    Process.Start(solutionFile.FullName);
             }
         }
     }
