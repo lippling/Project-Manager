@@ -86,6 +86,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SolutionNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectManager\ProjectManager.csproj">

@@ -5,9 +5,9 @@ namespace ProjectManager
 {
     public class ProjectCollection : List<Project>
     {
-        public void Load(SolutionCollection solutionFileCollection)
+        public void Load(SolutionCollection solutionCollection)
         {
-            foreach (var file in solutionFileCollection)
+            foreach (var file in solutionCollection)
             {
                 var nameMatch = Regex.Match(file.FullName, @"(trunk|tags|branches)\\[^\\]+\\src\\([^\\]+)\.sln$");
                 var name = nameMatch.Groups[2].Value;
@@ -21,9 +21,9 @@ namespace ProjectManager
                     }
                     switch (nameMatch.Groups[1].Value)
                     {
-                        case "trunk": project.SolutionFile = file; break;
-                        case "branches": project.BranchesSolutionFiles.Add(new Branch { SolutionFile = file }); break;
-                        case "tags": project.TagsSolutionFiles.Add(new Tag { SolutionFile = file }); break;
+                        case "trunk": project.Solution = file; break;
+                        case "branches": project.BranchesSolutions.Add(new Branch { Solution = file }); break;
+                        case "tags": project.TagsSolutions.Add(new Tag { Solution = file }); break;
                     }
                 }
                 else
@@ -32,7 +32,7 @@ namespace ProjectManager
                     name = nameMatch.Groups[1].Value;
                     var project = Find(p => p.Name == name) as Project;
                     if (project == null)
-                        Add(new Project { Name = name, SolutionFile = file });
+                        Add(new Project { Name = name, Solution = file });
                 }
             }
         }

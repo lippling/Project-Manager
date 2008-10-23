@@ -21,6 +21,11 @@ namespace ProjectManagerGUI
         {
             InitializeComponent();
             notifyIcon.Icon = Icon;
+
+            var screen = Screen.AllScreens.First<Screen>((s) => s.Primary);
+            Left = screen.WorkingArea.Width - Width;
+            Top = screen.WorkingArea.Height - Height;
+
             worker.DoWork += (s, e) =>
             {
                 if (InvokeRequired)
@@ -76,17 +81,16 @@ namespace ProjectManagerGUI
             {
                 e.Cancel = true;
                 Hide();
-                notifyIcon.Visible = true;
             }
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
-                Show();
-                notifyIcon.Visible = false;
-            }
+                if (Visible)
+                    Hide();
+                else
+                    Show();
         }
     }
 }

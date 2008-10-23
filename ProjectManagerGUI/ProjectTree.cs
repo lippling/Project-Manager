@@ -31,16 +31,15 @@ namespace ProjectManagerGUI
 
                     var projectsNode = new TreeNode { Text = "Projects" };
                     treeView.Nodes.Add(projectsNode);
-
                     foreach (var project in projects)
                     {
                         var sp = project as StructuredProject;
                         if (sp != null)
                         {
                             var projectNode = AddProject(structuredProjectsNode, project);
-                            AddTrunk(projectNode, sp.SolutionFile);
-                            AddBranchTag(projectNode, sp.BranchesSolutionFiles, "branches");
-                            AddBranchTag(projectNode, sp.TagsSolutionFiles, "tags");
+                            AddTrunk(projectNode, sp.Solution);
+                            AddBranchTag(projectNode, sp.BranchesSolutions, "branches");
+                            AddBranchTag(projectNode, sp.TagsSolutions, "tags");
                         }
                         else
                         {
@@ -66,7 +65,7 @@ namespace ProjectManagerGUI
         private static void AddTrunk(TreeNode projectNode, Solution trunk)
         {
             if (trunk != null)
-                projectNode.Nodes.Add(new TreeNode { Text = "trunk", Tag = trunk });
+                projectNode.Nodes.Add(new SolutionNode { Text = "trunk", Solution = trunk });
         }
 
         private static void AddBranchTag(TreeNode projectNode, ICollection<BranchTagBase> items, string rootName)
@@ -76,7 +75,7 @@ namespace ProjectManagerGUI
                 var branchesNode = new TreeNode { Text = rootName };
                 projectNode.Nodes.Add(branchesNode);
                 foreach (var item in items)
-                    branchesNode.Nodes.Add(new TreeNode { Text = item.Name, ToolTipText = item.SolutionFile.FullName, Tag = item.SolutionFile });
+                    branchesNode.Nodes.Add(new SolutionNode { Text = item.Name, Solution = item.Solution });
             }
         }
 
@@ -97,9 +96,9 @@ namespace ProjectManagerGUI
         {
             if (e.Button == MouseButtons.Left)
             {
-                var solutionFile = e.Node.Tag as Solution;
-                if (solutionFile != null)
-                    Process.Start(solutionFile.FullName);
+                var node = e.Node as SolutionNode;
+                if (node != null)
+                    node.Solution.Open();
             }
         }
     }

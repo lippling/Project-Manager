@@ -8,7 +8,7 @@ namespace ProjectManager
         {
             get
             {
-                return Regex.Match(SolutionFile.FullName, @"\\tags\\([^\\]+)\\").Groups[1].Value;
+                return Regex.Match(Solution.FullName, @"\\tags\\([^\\]+)\\").Groups[1].Value;
             }
         }
     }

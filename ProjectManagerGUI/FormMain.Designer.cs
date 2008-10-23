@@ -36,9 +36,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.projectTree = new ProjectManagerGUI.ProjectTree();
             this.notifyIconContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.quitContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectTree = new ProjectManagerGUI.ProjectTree();
             this.menuStrip.SuspendLayout();
             this.notifyIconContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +95,22 @@
             // 
             this.notifyIcon.ContextMenuStrip = this.notifyIconContextMenu;
             this.notifyIcon.Text = "Project Manager";
+            this.notifyIcon.Visible = true;
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            // 
+            // notifyIconContextMenu
+            // 
+            this.notifyIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitContextMenuItem});
+            this.notifyIconContextMenu.Name = "notifyIconContextMenu";
+            this.notifyIconContextMenu.Size = new System.Drawing.Size(98, 26);
+            // 
+            // quitContextMenuItem
+            // 
+            this.quitContextMenuItem.Name = "quitContextMenuItem";
+            this.quitContextMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitContextMenuItem.Text = "Quit";
+            this.quitContextMenuItem.Click += new System.EventHandler(this.menuItemQuit_Click);
             // 
             // projectTree
             // 
@@ -105,20 +120,6 @@
             this.projectTree.Projects = null;
             this.projectTree.Size = new System.Drawing.Size(364, 395);
             this.projectTree.TabIndex = 0;
-            // 
-            // notifyIconContextMenu
-            // 
-            this.notifyIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitContextMenuItem});
-            this.notifyIconContextMenu.Name = "notifyIconContextMenu";
-            this.notifyIconContextMenu.Size = new System.Drawing.Size(153, 48);
-            // 
-            // quitContextMenuItem
-            // 
-            this.quitContextMenuItem.Name = "quitContextMenuItem";
-            this.quitContextMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitContextMenuItem.Text = "Quit";
-            this.quitContextMenuItem.Click += new System.EventHandler(this.menuItemQuit_Click);
             // 
             // FormMain
             // 
@@ -130,6 +131,8 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Project Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.menuStrip.ResumeLayout(false);
