@@ -87,10 +87,10 @@ namespace ProjectManagerGUI
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                if (Visible)
-                    Hide();
-                else
-                    Show();
+            {
+                Show();
+                Activate();
+            }
         }
     }
 }

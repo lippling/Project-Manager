@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Branch.cs" />
     <Compile Include="BranchTagBase.cs" />
+    <Compile Include="BuildConfiguration.cs" />
+    <Compile Include="BuildConfigurationCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectDefinition.cs" />
     <Compile Include="StructuredProjectDefinition.cs" />

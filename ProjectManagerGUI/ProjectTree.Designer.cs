@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.treeView = new System.Windows.Forms.TreeView();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // treeView
@@ -38,9 +40,16 @@
             this.treeView.Name = "treeView";
             this.treeView.ShowNodeToolTips = true;
             this.treeView.Size = new System.Drawing.Size(150, 150);
+            this.treeView.StateImageList = this.imageList;
             this.treeView.TabIndex = 0;
             this.treeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseDoubleClick);
             this.treeView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseDown);
+            // 
+            // imageList
+            // 
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // ProjectTree
             // 
@@ -55,5 +64,6 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView;
+        private System.Windows.Forms.ImageList imageList;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
 using System.Diagnostics;
+using ProjectManagerGUI.Properties;
 
 namespace ProjectManagerGUI
 {
@@ -65,7 +66,7 @@ namespace ProjectManagerGUI
         private static void AddTrunk(TreeNode projectNode, Solution trunk)
         {
             if (trunk != null)
-                projectNode.Nodes.Add(new SolutionNode { Text = "trunk", Solution = trunk });
+                projectNode.Nodes.Add(new SolutionNode(trunk) { Text = "trunk" });
         }
 
         private static void AddBranchTag(TreeNode projectNode, ICollection<BranchTagBase> items, string rootName)
@@ -75,13 +76,15 @@ namespace ProjectManagerGUI
                 var branchesNode = new TreeNode { Text = rootName };
                 projectNode.Nodes.Add(branchesNode);
                 foreach (var item in items)
-                    branchesNode.Nodes.Add(new SolutionNode { Text = item.Name, Solution = item.Solution });
+                    branchesNode.Nodes.Add(new SolutionNode(item.Solution) { Text = item.Name });
             }
         }
 
         public ProjectTree()
         {
             InitializeComponent();
+            imageList.Images.Add("Play", Resources.Play);
+            imageList.Images.Add("Record", Resources.Record);
         }
 
         private void treeView_MouseDown(object sender, MouseEventArgs e)
