@@ -6,11 +6,24 @@ namespace ProjectManager
 {
     public class Solution
     {
-        public string FullName { get; set; }
+        private FileInfo solution;
+
+        public Solution(string fullName)
+        {
+            solution = new FileInfo(fullName);
+        }
+
+        public string FullName { get { return solution.FullName; } }
+        public string Path { get { return solution.DirectoryName; } }
 
         public void Open()
         {
             Process.Start(FullName);
+        }
+
+        public void OpenContainingFolder()
+        {
+            Process.Start(Path);
         }
     }
 }

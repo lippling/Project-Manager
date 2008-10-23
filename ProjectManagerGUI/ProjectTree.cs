@@ -33,7 +33,7 @@ namespace ProjectManagerGUI
                     treeView.Nodes.Add(projectsNode);
                     foreach (var project in projects)
                     {
-                        var sp = project as StructuredProject;
+                        var sp = project as StructuredProjectDefinition;
                         if (sp != null)
                         {
                             var projectNode = AddProject(structuredProjectsNode, project);
@@ -55,7 +55,7 @@ namespace ProjectManagerGUI
             }
         }
 
-        private static TreeNode AddProject(TreeNode node, Project project)
+        private static TreeNode AddProject(TreeNode node, ProjectDefinition project)
         {
             var projectNode = new TreeNode { Text = project.Name, Tag = project };
             node.Nodes.Add(projectNode);

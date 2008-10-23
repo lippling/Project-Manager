@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ProjectManager
 {
-    public class ProjectCollection : List<Project>
+    public class ProjectCollection : List<ProjectDefinition>
     {
         public void Load(SolutionCollection solutionCollection)
         {
@@ -13,10 +13,10 @@ namespace ProjectManager
                 var name = nameMatch.Groups[2].Value;
                 if (nameMatch.Success)
                 {
-                    var project = Find(p => p.Name == name) as StructuredProject;
+                    var project = Find(p => p.Name == name) as StructuredProjectDefinition;
                     if (project == null)
                     {
-                        project = new StructuredProject { Name = name };
+                        project = new StructuredProjectDefinition(name);
                         Add(project);
                     }
                     switch (nameMatch.Groups[1].Value)
@@ -30,9 +30,9 @@ namespace ProjectManager
                 {
                     nameMatch = Regex.Match(file.FullName, @"([^\\]+)\.sln$");
                     name = nameMatch.Groups[1].Value;
-                    var project = Find(p => p.Name == name) as Project;
+                    var project = Find(p => p.Name == name) as ProjectDefinition;
                     if (project == null)
-                        Add(new Project { Name = name, Solution = file });
+                        Add(new ProjectDefinition(name) { Solution = file });
                 }
             }
         }

@@ -48,8 +48,8 @@
     <Compile Include="Branch.cs" />
     <Compile Include="BranchTagBase.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Project.cs" />
-    <Compile Include="StructuredProject.cs" />
+    <Compile Include="ProjectDefinition.cs" />
+    <Compile Include="StructuredProjectDefinition.cs" />
     <Compile Include="ProjectCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCollection.cs" />

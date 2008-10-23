@@ -18,7 +18,7 @@ namespace ProjectManager
 
             foreach (var file in GetAllFileNames(rootPath))
             {
-                Add(new Solution { FullName = file });
+                Add(new Solution(file));
             }
         }
 
