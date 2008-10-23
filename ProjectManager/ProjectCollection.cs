@@ -5,7 +5,7 @@ namespace ProjectManager
 {
     public class ProjectCollection : List<Project>
     {
-        public void Load(SolutionFileCollection solutionFileCollection)
+        public void Load(SolutionCollection solutionFileCollection)
         {
             foreach (var file in solutionFileCollection)
             {

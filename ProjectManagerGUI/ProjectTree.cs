@@ -63,7 +63,7 @@ namespace ProjectManagerGUI
             return projectNode;
         }
 
-        private static void AddTrunk(TreeNode projectNode, SolutionFile trunk)
+        private static void AddTrunk(TreeNode projectNode, Solution trunk)
         {
             if (trunk != null)
                 projectNode.Nodes.Add(new TreeNode { Text = "trunk", Tag = trunk });
@@ -97,7 +97,7 @@ namespace ProjectManagerGUI
         {
             if (e.Button == MouseButtons.Left)
             {
-                var solutionFile = e.Node.Tag as SolutionFile;
+                var solutionFile = e.Node.Tag as Solution;
                 if (solutionFile != null)
                     Process.Start(solutionFile.FullName);
             }

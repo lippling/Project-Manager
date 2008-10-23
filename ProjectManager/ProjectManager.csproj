@@ -52,8 +52,8 @@
     <Compile Include="StructuredProject.cs" />
     <Compile Include="ProjectCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolutionFileCollection.cs" />
-    <Compile Include="SolutionFile.cs" />
+    <Compile Include="SolutionCollection.cs" />
+    <Compile Include="Solution.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

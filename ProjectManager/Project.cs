@@ -8,7 +8,7 @@ namespace ProjectManager
     public class Project
     {
         public string Name { get; set; }
-        public SolutionFile SolutionFile { get; set; }
+        public Solution SolutionFile { get; set; }
 
         public override string ToString()
         {

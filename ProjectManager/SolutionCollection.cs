@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ProjectManager
 {
-    public class SolutionFileCollection : List<SolutionFile>
+    public class SolutionCollection : List<Solution>
     {
         public void Load(string rootPath)
         {
@@ -18,7 +18,7 @@ namespace ProjectManager
 
             foreach (var file in GetAllFileNames(rootPath))
             {
-                Add(new SolutionFile { FullName = file });
+                Add(new Solution { FullName = file });
             }
         }
 

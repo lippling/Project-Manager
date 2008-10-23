@@ -39,7 +39,7 @@ namespace ProjectManagerGUI
                     progressBar.MarqueeAnimationSpeed = 100;
                 }
 
-                var container = new SolutionFileCollection();
+                var container = new SolutionCollection();
                 container.Load(@"D:\SVN_Working_Copies\GAdvance");
 
                 var projects = new ProjectCollection();

@@ -10,11 +10,11 @@ namespace ProjectManager
     {
         static void Main(string[] args)
         {
-            SolutionFileCollection container;
+            SolutionCollection container;
             using (var sr = new StreamReader("SolutionContainer.ser"))
             {
-                var x = new XmlSerializer(typeof(SolutionFileCollection));
-                container = (SolutionFileCollection)x.Deserialize(sr);
+                var x = new XmlSerializer(typeof(SolutionCollection));
+                container = (SolutionCollection)x.Deserialize(sr);
             }
 
             //var container = new SolutionFileCollection();

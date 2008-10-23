@@ -7,7 +7,7 @@ namespace ProjectManager
     public abstract class BranchTagBase
     {
         public abstract string Name { get; }
-        public SolutionFile SolutionFile { get; set; }
+        public Solution SolutionFile { get; set; }
 
         public override string ToString()
         {

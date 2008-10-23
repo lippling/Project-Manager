@@ -2,7 +2,7 @@ using System.IO;
 
 namespace ProjectManager
 {
-    public class SolutionFile
+    public class Solution
     {
         public string FullName { get; set; }        
     }
