@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Diagnostics;
+
 using Microsoft.Win32;
 
 namespace ProjectManager
@@ -28,6 +30,7 @@ namespace ProjectManager
             psi.WindowStyle = ProcessWindowStyle.Hidden;
             var p = Process.Start(psi);
             p.WaitForExit();
+            File.Delete(Solution.FullName + ".cache");
             return p.ExitCode;
         }
     }

@@ -10,6 +10,7 @@ using ProjectManager;
 using System.IO;
 using System.Xml.Serialization;
 using System.Threading;
+using ProjectManagerGUI.Properties;
 
 namespace ProjectManagerGUI
 {
@@ -45,7 +46,7 @@ namespace ProjectManagerGUI
                 }
 
                 var container = new SolutionCollection();
-                container.Load(@"D:\SVN_Working_Copies\GAdvance");
+                container.Load(Settings.Default.WorkingCopyLocation);
 
                 var projects = new ProjectCollection();
                 projects.Load(container);
