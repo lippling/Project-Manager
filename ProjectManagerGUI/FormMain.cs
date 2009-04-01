@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -55,6 +56,8 @@ namespace ProjectManagerGUI
 
             worker.RunWorkerCompleted += (s, e) =>
             {
+                var fav = Settings.Default.FavoriteProjects;
+                projectTree.FavoriteProjects = fav != null ? fav.Cast<string>() : new List<string>();
                 projectTree.Projects = (ProjectCollection)e.Result;
                 progressBar.MarqueeAnimationSpeed = 0;
                 progressBar.Visible = false;

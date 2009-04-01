@@ -14,6 +14,8 @@ namespace ProjectManagerGUI
 {
     public partial class ProjectTree : UserControl
     {
+        public IEnumerable<string> FavoriteProjects { private get; set; }
+
         private ProjectCollection projects;
         public ProjectCollection Projects
         {
@@ -27,26 +29,35 @@ namespace ProjectManagerGUI
                     treeView.BeginUpdate();
                     treeView.Nodes.Clear();
 
+                    var favoritesNode = new TreeNode { Text = "Favorites" };
+                    treeView.Nodes.Add(favoritesNode);
+
                     var projectsNode = new TreeNode { Text = "Projects" };
                     treeView.Nodes.Add(projectsNode);
                     foreach (var project in projects)
                     {
+                        var node = FavoriteProjects.Contains(project.Name) ? favoritesNode : projectsNode;
+
                         var sp = project as StructuredProjectDefinition;
                         if (sp != null)
                         {
-                            var projectNode = AddProjectRoot(projectsNode, project);
+                            var projectNode = AddProjectRoot(node, project);
                             AddTrunk(projectNode, sp.Solution);
                             AddBranchTag(projectNode, sp.BranchesSolutions, "branches");
                             AddBranchTag(projectNode, sp.TagsSolutions, "tags");
                         }
                         else
                         {
-                            AddProject(projectsNode, project);
+                            AddProject(node, project);
                         }
                     }
 
                     treeView.Sort();
-                    projectsNode.Expand();
+                    
+                    if (favoritesNode.Nodes.Count > 0)
+                        favoritesNode.Expand();
+                    else
+                        projectsNode.Expand();
 
                     treeView.EndUpdate();
                 }
