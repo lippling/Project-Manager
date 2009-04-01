@@ -27,9 +27,6 @@ namespace ProjectManagerGUI
                     treeView.BeginUpdate();
                     treeView.Nodes.Clear();
 
-                    var structuredProjectsNode = new TreeNode { Text = "Structured Projects" };
-                    treeView.Nodes.Add(structuredProjectsNode);
-
                     var projectsNode = new TreeNode { Text = "Projects" };
                     treeView.Nodes.Add(projectsNode);
                     foreach (var project in projects)
@@ -37,7 +34,7 @@ namespace ProjectManagerGUI
                         var sp = project as StructuredProjectDefinition;
                         if (sp != null)
                         {
-                            var projectNode = AddProject(structuredProjectsNode, project);
+                            var projectNode = AddProjectRoot(projectsNode, project);
                             AddTrunk(projectNode, sp.Solution);
                             AddBranchTag(projectNode, sp.BranchesSolutions, "branches");
                             AddBranchTag(projectNode, sp.TagsSolutions, "tags");
@@ -49,18 +46,24 @@ namespace ProjectManagerGUI
                     }
 
                     treeView.Sort();
-                    structuredProjectsNode.Expand();
+                    projectsNode.Expand();
 
                     treeView.EndUpdate();
                 }
             }
         }
 
-        private static TreeNode AddProject(TreeNode node, ProjectDefinition project)
+        private static TreeNode AddProjectRoot(TreeNode node, ProjectDefinition project)
         {
             var projectNode = new TreeNode { Text = project.Name, Tag = project };
             node.Nodes.Add(projectNode);
             return projectNode;
+        }
+
+        private static void AddProject(TreeNode node, ProjectDefinition project)
+        {
+            var projectNode = new SolutionNode(project.Solution) { Text = project.Name };
+            node.Nodes.Add(projectNode);
         }
 
         private static void AddTrunk(TreeNode projectNode, Solution trunk)

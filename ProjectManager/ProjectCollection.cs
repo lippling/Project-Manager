@@ -30,7 +30,7 @@ namespace ProjectManager
                 {
                     nameMatch = Regex.Match(file.FullName, @"([^\\]+)\.sln$");
                     name = nameMatch.Groups[1].Value;
-                    var project = Find(p => p.Name == name) as ProjectDefinition;
+                    var project = Find(p => p.Name == name);
                     if (project == null)
                         Add(new ProjectDefinition(name) { Solution = file });
                 }
