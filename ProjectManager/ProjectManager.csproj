@@ -12,6 +12,8 @@
     <AssemblyName>ProjectManager</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +51,7 @@
     <Compile Include="BranchTagBase.cs" />
     <Compile Include="BuildConfiguration.cs" />
     <Compile Include="BuildConfigurationCollection.cs" />
+    <Compile Include="ICustomTypeDescriptorExtension.cs" />
     <Compile Include="ProjectDefinition.cs" />
     <Compile Include="StructuredProjectDefinition.cs" />
     <Compile Include="ProjectCollection.cs" />
@@ -56,6 +59,9 @@
     <Compile Include="SolutionCollection.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="Tag.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

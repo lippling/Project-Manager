@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
@@ -22,6 +24,7 @@ namespace ProjectManagerGUI
         public FormMain()
         {
             InitializeComponent();
+            SetWindowTitle();
             notifyIcon.Icon = Icon;
 
             var screen = Screen.AllScreens.First<Screen>((s) => s.Primary);
@@ -65,6 +68,15 @@ namespace ProjectManagerGUI
             };
 
             worker.RunWorkerAsync();
+        }
+
+        private void SetWindowTitle()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var version = new Version(assembly.GetAttribute<AssemblyFileVersionAttribute>().Version).ToString(2);
+            var copyright = assembly.GetAttribute<AssemblyCopyrightAttribute>().Copyright;
+            var company = assembly.GetAttribute<AssemblyCompanyAttribute>().Company;
+            Text += string.Format(" {0} {1} {2}", version, copyright, company);
         }
 
         private void menuItemRefresh_Click(object sender, EventArgs e)
