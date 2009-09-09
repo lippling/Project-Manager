@@ -1,0 +1,7 @@
+/ProjectManager/bin
+/ProjectManager/obj
+/ProjectManagerGUI/bin
+/ProjectManagerGUI/obj
+_ReSharper.*
+*resharper*
+*.suo
