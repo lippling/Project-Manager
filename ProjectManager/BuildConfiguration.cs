@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace ProjectManager
@@ -26,7 +26,7 @@ namespace ProjectManager
             //var p = Process.Start(vsPath + "devenv.exe", Solution.FullName + " /build " + Name);
             var psi = new ProcessStartInfo();
             psi.FileName = @"C:\Windows\Microsoft.NET\Framework\v3.5\msbuild.exe";
-            psi.Arguments = Solution.FullName + " /property:Configuration=" + Name;
+            psi.Arguments = string.Format("\"{0}\" /property:Configuration={1}", Solution.FullName, Name);
             psi.WindowStyle = ProcessWindowStyle.Hidden;
             var p = Process.Start(psi);
             p.WaitForExit();
