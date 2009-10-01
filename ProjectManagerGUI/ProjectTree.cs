@@ -118,5 +118,15 @@ namespace ProjectManagerGUI
                     node.Solution.Open();
             }
         }
+
+        private void treeView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Keys)e.KeyChar == Keys.Enter)
+            {
+                var node = treeView.SelectedNode as SolutionNode;
+                if (node != null)
+                    node.Solution.Open();
+            }
+        }
     }
 }
