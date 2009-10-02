@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
 using System.Drawing;
 using System.ComponentModel;
-using ProjectManagerGUI.Properties;
 
 namespace ProjectManagerGUI
 {
-    public class SolutionNode : TreeNode
+    public sealed class SolutionNode : TreeNode
     {
         public Solution Solution { get; private set; }
 
@@ -33,11 +29,11 @@ namespace ProjectManagerGUI
             {
                 var compile = ContextMenuStrip.Items.Add("Compile " + conf.Name);
                 compile.Tag = conf;
-                compile.Click += new EventHandler(compile_Click);
+                compile.Click += Compile_Click;
             }
         }
 
-        private void compile_Click(object sender, EventArgs e)
+        private void Compile_Click(object sender, EventArgs e)
         {
             var compile = (ToolStripItem)sender;
 

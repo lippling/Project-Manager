@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
-using System.IO;
-using System.Xml.Serialization;
 using System.Threading;
 using ProjectManagerGUI.Properties;
 
@@ -19,7 +12,7 @@ namespace ProjectManagerGUI
 {
     public partial class FormMain : Form
     {
-        private BackgroundWorker worker = new BackgroundWorker();
+        private readonly BackgroundWorker worker = new BackgroundWorker();
 
         public FormMain()
         {
@@ -27,7 +20,7 @@ namespace ProjectManagerGUI
             SetWindowTitle();
             notifyIcon.Icon = Icon;
 
-            var screen = Screen.AllScreens.First<Screen>((s) => s.Primary);
+            var screen = Screen.AllScreens.First(s => s.Primary);
             Left = screen.WorkingArea.Width - Width;
             Top = screen.WorkingArea.Height - Height;
 

@@ -1,12 +1,11 @@
 using System.IO;
 using System.Diagnostics;
-using System;
 
 namespace ProjectManager
 {
     public class Solution
     {
-        private FileInfo solution;
+        private readonly FileInfo solution;
 
         public Solution(string fullName)
         {

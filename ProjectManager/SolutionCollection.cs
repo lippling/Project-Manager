@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 
 namespace ProjectManager
@@ -30,36 +28,17 @@ namespace ProjectManager
         /// <returns>A string array containing all the file names.</returns>
         private static IList<string> GetAllFileNames(string baseDir)
         {
-            //
-            // Store results in the file results list.
-            //
-            List<string> fileResults = new List<string>();
-
-            //
-            // Store a stack of our directories.
-            //
-            Stack<string> directoryStack = new Stack<string>();
+            var fileResults = new List<string>();
+            var directoryStack = new Stack<string>();
             directoryStack.Push(baseDir);
 
-            //
-            // While there are directories to process
-            //
             while (directoryStack.Count > 0)
             {
-                string currentDir = directoryStack.Pop();
-
-                //
-                // Add all files at this directory.
-                //
-                foreach (string fileName in Directory.GetFiles(currentDir, "*.sln"))
-                {
+                var currentDir = directoryStack.Pop();
+                foreach (var fileName in Directory.GetFiles(currentDir, "*.sln"))
                     fileResults.Add(fileName);
-                }
 
-                //
-                // Add all directories at this directory.
-                //
-                foreach (string directoryName in Directory.GetDirectories(currentDir))
+                foreach (var directoryName in Directory.GetDirectories(currentDir))
                 {
                     if (!directoryName.Contains("\\.svn"))
                         directoryStack.Push(directoryName);

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace ProjectManager
 {
     public class BuildConfiguration
     {
         public string Name { get; private set; }
+
         public Solution Solution { get; private set; }
-        
+
         public BuildConfiguration(string name, Solution solution)
         {
             Name = name;
@@ -24,10 +19,11 @@ namespace ProjectManager
         {
             //var vsPath = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\9.0", "InstallDir", null);
             //var p = Process.Start(vsPath + "devenv.exe", Solution.FullName + " /build " + Name);
-            var psi = new ProcessStartInfo();
-            psi.FileName = @"C:\Windows\Microsoft.NET\Framework\v3.5\msbuild.exe";
-            psi.Arguments = string.Format("\"{0}\" /property:Configuration={1}", Solution.FullName, Name);
-            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            var psi = new ProcessStartInfo
+            {
+                FileName = @"C:\Windows\Microsoft.NET\Framework\v3.5\msbuild.exe",
+                Arguments = string.Format("\"{0}\" /property:Configuration={1}", Solution.FullName, Name), WindowStyle = ProcessWindowStyle.Hidden
+            };
             var p = Process.Start(psi);
             p.WaitForExit();
             File.Delete(Solution.FullName + ".cache");

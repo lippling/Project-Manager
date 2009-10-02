@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ProjectManager;
-using System.Diagnostics;
 using ProjectManagerGUI.Properties;
 
 namespace ProjectManagerGUI
