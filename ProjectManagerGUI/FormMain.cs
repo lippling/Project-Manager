@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -69,7 +70,7 @@ namespace ProjectManagerGUI
             var version = new Version(assembly.GetAttribute<AssemblyFileVersionAttribute>().Version).ToString(2);
             var copyright = assembly.GetAttribute<AssemblyCopyrightAttribute>().Copyright;
             var company = assembly.GetAttribute<AssemblyCompanyAttribute>().Company;
-            Text += string.Format(" {0} {1} {2}", version, copyright, company);
+            Text += string.Format(CultureInfo.CurrentCulture, " {0} {1} {2}", version, copyright, company);
         }
 
         private void menuItemRefresh_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows.Forms;
 using ProjectManager;
@@ -10,8 +11,10 @@ namespace ProjectManagerGUI
     {
         public IEnumerable<string> FavoriteProjects { private get; set; }
 
-        private ProjectCollection projects;
-        public ProjectCollection Projects
+        private IEnumerable<ProjectDefinition> projects;
+        
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public IEnumerable<ProjectDefinition> Projects
         {
             get { return projects; }
             set

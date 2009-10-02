@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 
 namespace ProjectManager
@@ -22,7 +23,8 @@ namespace ProjectManager
             var psi = new ProcessStartInfo
             {
                 FileName = @"C:\Windows\Microsoft.NET\Framework\v3.5\msbuild.exe",
-                Arguments = string.Format("\"{0}\" /property:Configuration={1}", Solution.FullName, Name), WindowStyle = ProcessWindowStyle.Hidden
+                Arguments = string.Format(CultureInfo.InvariantCulture, "\"{0}\" /property:Configuration={1}", Solution.FullName, Name), 
+                WindowStyle = ProcessWindowStyle.Hidden
             };
             var p = Process.Start(psi);
             p.WaitForExit();

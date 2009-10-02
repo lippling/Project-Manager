@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 
@@ -10,13 +11,14 @@ namespace ProjectManager
         public Solution(string fullName)
         {
             solution = new FileInfo(fullName);
-            BuildConfigurations = new BuildConfigurationCollection();
-            BuildConfigurations.Load(this);
+            var b = new BuildConfigurationCollection();
+            b.Load(this);
+            BuildConfigurations = b;
         }
 
         public string FullName { get { return solution.FullName; } }
         public string Path { get { return solution.DirectoryName; } }
-        public BuildConfigurationCollection BuildConfigurations { get; private set; }
+        public IEnumerable<BuildConfiguration> BuildConfigurations { get; private set; }
 
         public void Open()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
 using ProjectManager;
 using System.Drawing;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 
 namespace ProjectManagerGUI
 {
+    [SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable")]
     public sealed class SolutionNode : TreeNode
     {
         public Solution Solution { get; private set; }
