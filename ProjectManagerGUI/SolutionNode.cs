@@ -29,19 +29,23 @@ namespace ProjectManagerGUI
 
             foreach (var conf in Solution.BuildConfigurations)
             {
-                var compile = ContextMenuStrip.Items.Add("Compile " + conf.Name);
-                compile.Tag = conf;
-                compile.Click += Compile_Click;
+                var item = new BuildConfigurationToolStripMenuItem
+                {
+                    Text = "Compile " + conf.Name, 
+                    BuildConfiguration = conf
+                };
+                ContextMenuStrip.Items.Add(item);
+                item.Click += BuildConfiguration_Click;
             }
         }
 
-        private void Compile_Click(object sender, EventArgs e)
+        private void BuildConfiguration_Click(object sender, EventArgs e)
         {
-            var compile = (ToolStripItem)sender;
+            var item = (BuildConfigurationToolStripMenuItem)sender;
 
             StateImageKey = "Play";
             var worker = new BackgroundWorker();
-            worker.DoWork += (s1, e1) => e1.Result = ((BuildConfiguration)compile.Tag).Compile();
+            worker.DoWork += (s1, e1) => e1.Result = item.BuildConfiguration.Compile();
             worker.RunWorkerCompleted += (s1, e1) =>
                 {
                     var r = (int)e1.Result;
