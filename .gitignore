@@ -2,6 +2,8 @@
 /ProjectManager/obj
 /ProjectManagerGUI/bin
 /ProjectManagerGUI/obj
+/ProjectManagerWPF/bin
+/ProjectManagerWPF/obj
 _ReSharper.*
 *resharper*
 *.suo
