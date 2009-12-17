@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -6,12 +7,21 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using ProjectManager;
+using ProjectManagerWPF.Properties;
 
 namespace ProjectManagerWPF
 {
     public partial class MainWindow
     {
         private bool close;
+
+        public static readonly DependencyProperty ProjectsProperty = DependencyProperty.Register("Projects", typeof(IList<ProjectDefinition>), typeof(MainWindow));
+        
+        public IList<ProjectDefinition> Projects 
+        {
+            get { return (IList<ProjectDefinition>)GetValue(ProjectsProperty); } 
+            set { SetValue(ProjectsProperty, value); } 
+        }
 
         public MainWindow()
         {
@@ -22,6 +32,13 @@ namespace ProjectManagerWPF
             var screen = Screen.AllScreens.First(s => s.Primary);
             Left = screen.WorkingArea.Width - Width;
             Top = screen.WorkingArea.Height - Height;
+
+            var container = new SolutionCollection();
+            container.Load(Settings.Default.WorkingCopyLocation);
+
+            var projects = new ProjectCollection();
+            projects.Load(container);
+            Projects = projects;
         }
 
         private void SetWindowTitle()

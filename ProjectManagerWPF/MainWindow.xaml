@@ -5,6 +5,8 @@
     Title="Project Manager" Height="470" Width="380" 
     Name="Window" Icon="Witch Hat.ico" Closing="Window_Closing">
     <Grid>
+        <ListBox ItemsSource="{Binding Projects, ElementName=Window}" Grid.IsSharedSizeScope="True">
+        </ListBox>
         <ProjectManagerWPF:NotifyIcon x:Name="NotifyIcon" Text="Project Manager" Click="NotifyIcon_Click">
             <ProjectManagerWPF:NotifyIcon.ContextMenu>
                 <ContextMenu>
