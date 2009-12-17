@@ -1,0 +1,7 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>D:\Project-Manager\lib\nunit\nunit.exe</StartProgram>
+    <StartArguments>ProjectManager.Tests.dll</StartArguments>
+  </PropertyGroup>
+</Project>

@@ -1,5 +1,7 @@
 /src/ProjectManager/bin
 /src/ProjectManager/obj
+/src/ProjectManager.Tests/bin
+/src/ProjectManager.Tests/obj
 /src/ProjectManagerGUI/bin
 /src/ProjectManagerGUI/obj
 /src/ProjectManagerWPF/bin
@@ -7,3 +9,4 @@
 /src/_ReSharper.*
 /src/*resharper*
 /src/*.suo
+/src/**/*.csproj.user

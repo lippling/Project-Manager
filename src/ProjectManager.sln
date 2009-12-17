@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerGUI", "Projec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerWPF", "ProjectManagerWPF\ProjectManagerWPF.csproj", "{4C59A612-C186-48EC-A3D2-DDE3B05995B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.Tests", "ProjectManager.Tests\ProjectManager.Tests.csproj", "{BD02DDE9-7473-410C-B18F-A15C8745B550}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{4C59A612-C186-48EC-A3D2-DDE3B05995B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C59A612-C186-48EC-A3D2-DDE3B05995B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C59A612-C186-48EC-A3D2-DDE3B05995B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD02DDE9-7473-410C-B18F-A15C8745B550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD02DDE9-7473-410C-B18F-A15C8745B550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD02DDE9-7473-410C-B18F-A15C8745B550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD02DDE9-7473-410C-B18F-A15C8745B550}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
